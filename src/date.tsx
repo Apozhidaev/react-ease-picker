@@ -12,7 +12,7 @@ import {
   adjustLeftPosition,
 } from "./common/date-picker";
 
-type Props = {
+export type DatePickerProps = {
   className?: string;
   date?: string;
   minDate?: string;
@@ -34,7 +34,7 @@ export function DatePicker({
   placeholder,
   position,
   resetButton = true,
-}: Props) {
+}: DatePickerProps) {
   const handleSelect = useEvent(onSelect);
   const options: EasePickOptions = useMemo(
     () => ({

@@ -14,13 +14,13 @@ import {
   adjustLeftPosition,
 } from "./common/range-picker";
 
-type Preset = {
+export type RangePickerPreset = {
   label: string;
   startDate: string;
   endDate: string;
 };
 
-type Props = {
+export type RangePickerProps = {
   className?: string;
   startDate?: string;
   endDate?: string;
@@ -28,7 +28,7 @@ type Props = {
   maxDate?: string;
   onSelect: (start: string, end: string) => void;
   format?: string;
-  presets?: Preset[];
+  presets?: RangePickerPreset[];
   placeholder?: string;
   position?: "left" | "right";
   autoApply?: boolean;
@@ -48,7 +48,7 @@ export function RangePicker({
   position,
   autoApply = true,
   resetButton = true,
-}: Props) {
+}: RangePickerProps) {
   const handleSelect = useEvent(onSelect);
   const customPreset = useMemo(() => {
     if (presets) {
