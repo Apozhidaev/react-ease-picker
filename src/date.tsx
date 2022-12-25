@@ -24,7 +24,7 @@ export type DatePickerProps = {
   resetButton?: boolean;
 };
 
-export function DatePicker({
+function DatePicker({
   className,
   date,
   minDate,

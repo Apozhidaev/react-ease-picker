@@ -35,7 +35,7 @@ export type RangePickerProps = {
   resetButton?: boolean;
 };
 
-export function RangePicker({
+function RangePicker({
   className,
   startDate,
   endDate,
