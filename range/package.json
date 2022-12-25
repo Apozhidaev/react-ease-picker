@@ -1,0 +1,6 @@
+{
+  "main": "index.js",
+  "module": "module.js",
+  "types": "../dist/range.d.ts",
+  "sideEffects": false
+}

@@ -1,0 +1,49 @@
+export const presetCss = /* css */ `
+.container.preset-plugin > main {
+  display: flex;
+}
+.container.preset-plugin > main.preset-left {
+  flex-direction: row-reverse;
+}
+.container.preset-plugin > main.preset-right {
+  flex-direction: row;
+}
+.container.preset-plugin > main.preset-left .preset-plugin-container,
+.container.preset-plugin > main.preset-right .preset-plugin-container {
+  flex-direction: column;
+  width: 130px;
+}
+.container.preset-plugin > main.preset-top {
+  flex-direction: column-reverse;
+}
+.container.preset-plugin > main.preset-bottom {
+  flex-direction: column;
+}
+.container.preset-plugin > main.preset-bottom .preset-plugin-container,
+.container.preset-plugin > main.preset-top .preset-plugin-container {
+  flex-direction: row;
+}
+.preset-plugin-container {
+  background-color: var(--color-bg-secondary);
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+.preset-plugin-container > button {
+  background-color: var(--color-bg-default);
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: var(--color-fg-default);
+  padding: 6px 10px;
+}
+.preset-plugin-container > button:hover {
+  border: 1px solid var(--color-fg-primary);
+  color: var(--color-fg-primary);
+  cursor: pointer;
+}
+.preset-plugin-container > button.active,
+.preset-plugin-container > button.active:hover {
+  background-color: var(--color-btn-primary-hover-bg);
+  color: var(--color-btn-primary-hover-fg);
+}
+`;
