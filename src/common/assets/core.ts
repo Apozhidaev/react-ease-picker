@@ -28,9 +28,9 @@ export const coreCss = /* css */ `
   --color-btn-secondary-disabled-border: var(--ease-color-btn-secondary-disabled-border, #cbd5e1);
   --color-border-default: var(--ease-color-border-default, #cbd5e1);
   --color-border-locked: var(--ease-color-border-locked, #f9f9f9);
-  --day-width: var(--ease-day-width, 42px);
+  --day-width: var(--ease-day-width, 43px);
   --day-height: var(--ease-day-height, 37px);
-  --popup-z-index: var(--ease-popup-z-index, 40);
+  --z-index: var(--ease-z-index, 40);
   --border-radius: var(--ease-border-radius, 2px);
   --primary-color: var(--ease-primary-color, #2e6fda);
   --secondary-color: var(--ease-secondary-color, #64748b);
@@ -38,9 +38,6 @@ export const coreCss = /* css */ `
 }
 * {
   box-sizing: border-box;
-}
-.easepick-wrapper {
-  z-index: var(--popup-z-index);
 }
 .container {
   border-radius: 4px;
@@ -56,6 +53,7 @@ export const coreCss = /* css */ `
   transform: scale(0);
   transform-origin: top left;
   transition: transform 0.3s ease-out;
+  z-index: var(--z-index);
 }
 .container.calc {
   height: auto;
