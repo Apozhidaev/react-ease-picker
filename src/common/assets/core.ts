@@ -16,7 +16,7 @@ export const coreCss = /* css */ `
   --color-btn-primary-hover-border: var(--ease-color-btn-primary-hover-border, #2c67cd);
   --color-btn-primary-disabled-bg: var(--ease-color-btn-primary-disabled-bg, #80aff8);
   --color-btn-primary-disabled-fg: var(--ease-color-btn-primary-disabled-fg, #fff);
-  --color-btn-primary-disabled-border: var(--ease-color-btn-primary-disabled-border, #80aff8);;
+  --color-btn-primary-disabled-border: var(--ease-color-btn-primary-disabled-border, #80aff8);
   --color-btn-secondary-bg: var(--ease-color-btn-secondary-bg, #fff);
   --color-btn-secondary-fg: var(--ease-color-btn-secondary-fg, #475569);
   --color-btn-secondary-border: var(--ease-color-btn-secondary-border, #cbd5e1);
