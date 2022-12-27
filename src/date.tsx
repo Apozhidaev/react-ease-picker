@@ -23,6 +23,8 @@ function DatePicker({
   placeholder,
   position,
   resetButton = true,
+  cancelText,
+  applyText,
   ...rest
 }: DatePickerProps) {
   const handleSelect = useEvent(onSelect);
@@ -48,6 +50,10 @@ function DatePicker({
           }
         });
       },
+      locale: {
+        ...(cancelText ? { cancel: cancelText } : {}),
+        ...(applyText ? { apply: applyText } : {}),
+      },
       AmpPlugin: {
         dropdown: {
           months: true,
@@ -66,7 +72,17 @@ function DatePicker({
         maxDate: maxDate ? new DateTime(maxDate).toJSDate() : undefined,
       },
     }),
-    [date, minDate, maxDate, format, position, resetButton, Object.values(rest)]
+    [
+      date,
+      minDate,
+      maxDate,
+      format,
+      position,
+      resetButton,
+      cancelText,
+      applyText,
+      Object.values(rest),
+    ]
   );
 
   return (

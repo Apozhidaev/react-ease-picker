@@ -1,6 +1,6 @@
 {
   "name": "react-ease-picker",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "main": "dist/index.js",
   "module": "dist/module.js",
   "types": "dist/index.d.ts",
@@ -15,6 +15,15 @@
     "date",
     "range",
     "src"
+  ],
+  "keywords": [
+    "easepick",
+    "datepicker",
+    "rangepicker",
+    "date",
+    "daterange",
+    "picker",
+    "range"
   ],
   "scripts": {
     "clean": "rm -rf dist/common",

@@ -53,32 +53,6 @@ function RangePicker({
       format,
       grid: 2,
       calendars: 2,
-      AmpPlugin: {
-        dropdown: {
-          months: true,
-          years: true,
-          ...(minDate ? { minYear: new DateTime(minDate).getFullYear() } : {}),
-          ...(maxDate ? { maxYear: new DateTime(maxDate).getFullYear() } : {}),
-        },
-        resetButton,
-        darkMode: false,
-        locale: {
-          resetButton: resetButtonIcon,
-        },
-      },
-      LockPlugin: {
-        minDate: minDate ? new DateTime(minDate).toJSDate() : undefined,
-        maxDate: maxDate ? new DateTime(maxDate).toJSDate() : undefined,
-      },
-      RangePlugin: {
-        startDate: startDate ? new DateTime(startDate) : undefined,
-        endDate: endDate ? new DateTime(endDate) : undefined,
-        delimiter: " – ",
-      },
-      PresetPlugin: {
-        position: "bottom",
-        customPreset,
-      },
       plugins: [
         AmpPlugin,
         RangePlugin,
@@ -127,6 +101,32 @@ function RangePicker({
       locale: {
         ...(cancelText ? { cancel: cancelText } : {}),
         ...(applyText ? { apply: applyText } : {}),
+      },
+      AmpPlugin: {
+        dropdown: {
+          months: true,
+          years: true,
+          ...(minDate ? { minYear: new DateTime(minDate).getFullYear() } : {}),
+          ...(maxDate ? { maxYear: new DateTime(maxDate).getFullYear() } : {}),
+        },
+        resetButton,
+        darkMode: false,
+        locale: {
+          resetButton: resetButtonIcon,
+        },
+      },
+      LockPlugin: {
+        minDate: minDate ? new DateTime(minDate).toJSDate() : undefined,
+        maxDate: maxDate ? new DateTime(maxDate).toJSDate() : undefined,
+      },
+      RangePlugin: {
+        startDate: startDate ? new DateTime(startDate) : undefined,
+        endDate: endDate ? new DateTime(endDate) : undefined,
+        delimiter: " – ",
+      },
+      PresetPlugin: {
+        position: "bottom",
+        customPreset,
       },
     }),
     [
