@@ -13,27 +13,7 @@ import {
   resetButtonIcon,
   adjustLeftPosition,
 } from "./common/range-picker";
-
-export type RangePickerPreset = {
-  label: string;
-  startDate: string;
-  endDate: string;
-};
-
-export type RangePickerProps = {
-  className?: string;
-  startDate?: string;
-  endDate?: string;
-  minDate?: string;
-  maxDate?: string;
-  onSelect: (start: string, end: string) => void;
-  format?: string;
-  presets?: RangePickerPreset[];
-  placeholder?: string;
-  position?: "left" | "right";
-  autoApply?: boolean;
-  resetButton?: boolean;
-};
+import { RangePickerProps } from "./types";
 
 function RangePicker({
   className,
@@ -46,8 +26,10 @@ function RangePicker({
   presets,
   placeholder = "Start date – End date",
   position,
-  autoApply = true,
   resetButton = true,
+  cancelText,
+  applyText,
+  ...rest
 }: RangePickerProps) {
   const handleSelect = useEvent(onSelect);
   const customPreset = useMemo(() => {
@@ -55,7 +37,10 @@ function RangePicker({
       const presetMap: Required<EasePickOptions>["PresetPlugin"]["customPreset"] =
         {};
       presets.forEach((x) => {
-        presetMap[x.label] = [new Date(x.startDate), new Date(x.endDate)];
+        presetMap[x.label] = [
+          x.startDate ? new Date(x.startDate) : new Date(),
+          x.endDate ? new Date(x.endDate) : new Date(),
+        ];
       });
       return presetMap;
     }
@@ -63,17 +48,17 @@ function RangePicker({
   }, [JSON.stringify(presets)]);
   const options: EasePickOptions = useMemo(
     () => ({
+      ...rest,
       css: rangePickerCss,
       format,
       grid: 2,
       calendars: 2,
-      autoApply,
       AmpPlugin: {
         dropdown: {
           months: true,
           years: true,
-          minYear: minDate ? new DateTime(minDate).getFullYear() : undefined,
-          maxYear: maxDate ? new DateTime(maxDate).getFullYear() : undefined,
+          ...(minDate ? { minYear: new DateTime(minDate).getFullYear() } : {}),
+          ...(maxDate ? { maxYear: new DateTime(maxDate).getFullYear() } : {}),
         },
         resetButton,
         darkMode: false,
@@ -139,8 +124,24 @@ function RangePicker({
           }
         });
       },
+      locale: {
+        ...(cancelText ? { cancel: cancelText } : {}),
+        ...(applyText ? { apply: applyText } : {}),
+      },
     }),
-    [startDate, endDate, minDate, maxDate, position, customPreset]
+    [
+      startDate,
+      endDate,
+      minDate,
+      maxDate,
+      format,
+      position,
+      resetButton,
+      cancelText,
+      applyText,
+      customPreset,
+      Object.values(rest),
+    ]
   );
 
   return (

@@ -8,8 +8,6 @@ function App() {
         <tr>
           <td>
             <DatePicker
-              minDate="2020-01-01"
-              maxDate="2023-01-01"
               onSelect={(date) => {
                 console.log(date);
               }}
@@ -17,6 +15,8 @@ function App() {
           </td>
           <td>
             <RangePicker
+              startDate="2022-01-01"
+              endDate="2022-01-16"
               minDate="2020-01-01"
               maxDate="2023-01-01"
               onSelect={(start, end) => {
@@ -40,7 +40,7 @@ function App() {
                 },
               ]}
               position="right"
-              // autoApply={false}
+              autoApply={false}
             />
           </td>
         </tr>

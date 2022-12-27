@@ -2,9 +2,97 @@
 
 DatePicker and RangePicker base on [easepick](https://easepick.com/).
 
-![DatePicker](./img/date.png)
-![RangePicker](./img/range.png)
+![DatePicker](https://github.com/Apozhidaev/react-ease-picker/blob/main/img/date.png)
+![RangePicker](https://github.com/Apozhidaev/react-ease-picker/blob/main/img/range.png)
 
+## How to Use
+
+Step 1.
+```bash
+npm i react-ease-picker
+```
+
+Step 2.
+```jsx
+import { DatePicker, RangePicker } from "react-ease-picker";
+
+function App() {
+  return (
+    <>
+      <DatePicker
+        onSelect={(date) => {
+          console.log(date);
+        }}
+      />
+      <RangePicker
+        minDate="2020-01-01"
+        maxDate="2023-01-01"
+        onSelect={(start, end) => {
+          console.log(start, end);
+        }}
+        presets={[
+          {
+            label: "Last Week",
+            startDate: "2022-01-01",
+            endDate: "2023-01-01",
+          },
+          {
+            label: "Last Month",
+            startDate: "2021-01-01",
+            endDate: "2023-01-01",
+          },
+        ]}
+        position="right"
+      />
+    </>
+  );
+}
+
+export default App;
+
+```
+ 
+### Props
+
+```typescript
+type CommonProps = {
+  className?: string;
+  minDate?: string;
+  maxDate?: string;
+  format?: string;
+  placeholder?: string;
+  position?: "left" | "right";
+  resetButton?: boolean;
+  firstDay?: number;
+  lang?: string;
+  zIndex?: number;
+  autoApply?: boolean;
+  scrollToDate?: boolean;
+  documentClick?: boolean | (() => void);
+};
+
+export type DatePickerProps = CommonProps & {
+  date?: string;
+  onSelect: (date: string) => void;
+};
+
+export type RangePickerPreset = {
+  label: string;
+  startDate?: string;
+  endDate?: string;
+};
+
+export type RangePickerProps = CommonProps & {
+  startDate?: string;
+  endDate?: string;
+  onSelect: (start: string, end: string) => void;
+  presets?: RangePickerPreset[];
+  autoApply?: boolean;
+  cancelText?: string;
+  applyText?: string;
+};
+
+```
 
 ## Customize
 ```css

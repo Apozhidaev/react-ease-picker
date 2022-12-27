@@ -11,18 +11,7 @@ import {
   resetButtonIcon,
   adjustLeftPosition,
 } from "./common/date-picker";
-
-export type DatePickerProps = {
-  className?: string;
-  date?: string;
-  minDate?: string;
-  maxDate?: string;
-  onSelect: (date: string) => void;
-  format?: string;
-  placeholder?: string;
-  position?: "left" | "right";
-  resetButton?: boolean;
-};
+import { DatePickerProps } from "./types";
 
 function DatePicker({
   className,
@@ -34,29 +23,15 @@ function DatePicker({
   placeholder,
   position,
   resetButton = true,
+  ...rest
 }: DatePickerProps) {
   const handleSelect = useEvent(onSelect);
   const options: EasePickOptions = useMemo(
     () => ({
+      ...rest,
       css: datePickerCss,
+      date: date ? new DateTime(date).toJSDate() : undefined,
       format,
-      AmpPlugin: {
-        dropdown: {
-          months: true,
-          years: true,
-          minYear: minDate ? new DateTime(minDate).getFullYear() : undefined,
-          maxYear: maxDate ? new DateTime(maxDate).getFullYear() : undefined,
-        },
-        resetButton,
-        darkMode: false,
-        locale: {
-          resetButton: resetButtonIcon,
-        },
-      },
-      LockPlugin: {
-        minDate: minDate ? new DateTime(minDate).toJSDate() : undefined,
-        maxDate: maxDate ? new DateTime(maxDate).toJSDate() : undefined,
-      },
       plugins: [AmpPlugin, LockPlugin],
       setup(picker) {
         picker.on("select", (e) => {
@@ -73,8 +48,25 @@ function DatePicker({
           }
         });
       },
+      AmpPlugin: {
+        dropdown: {
+          months: true,
+          years: true,
+          ...(minDate ? { minYear: new DateTime(minDate).getFullYear() } : {}),
+          ...(maxDate ? { maxYear: new DateTime(maxDate).getFullYear() } : {}),
+        },
+        resetButton,
+        darkMode: false,
+        locale: {
+          resetButton: resetButtonIcon,
+        },
+      },
+      LockPlugin: {
+        minDate: minDate ? new DateTime(minDate).toJSDate() : undefined,
+        maxDate: maxDate ? new DateTime(maxDate).toJSDate() : undefined,
+      },
     }),
-    [date, minDate, maxDate, position]
+    [date, minDate, maxDate, format, position, resetButton, Object.values(rest)]
   );
 
   return (
