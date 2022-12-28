@@ -5,6 +5,7 @@ export const resetButtonIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="no
 export const ampCss = /* css */ `
 :host {
   --month-name-font-weight: var(--ease-month-name-font-weight, 700);
+  --focus-color: var(--ease-focus-color, #2e6fda);
 }
 .container.amp-plugin .calendars .calendar > .header .month-name {
   align-items: center;
@@ -17,6 +18,7 @@ export const ampCss = /* css */ `
   border: none;
   font-size: 14px;
   padding: 3px;
+  border-radius: var(--border-radius);
 }
 .container.amp-plugin
   .calendars
@@ -56,5 +58,12 @@ export const ampCss = /* css */ `
   display: flex;
   font-size: 12px;
   justify-content: center;
+}
+.unit:focus-visible {
+  outline-width: 1px;
+  outline-style: dashed;
+  outline-color: var(--focus-color);
+  z-index: 1;
+  outline-offset: 1px;
 }
 `;

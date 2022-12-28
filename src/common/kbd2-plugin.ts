@@ -23,13 +23,12 @@ export class Kbd2Plugin extends BasePlugin implements IPlugin {
   public binds = {
     onKeydown: this.onKeydown.bind(this),
     onOpen: this.onOpen.bind(this),
-    onShow: this.onShow.bind(this),
-    onHide: this.onHide.bind(this),
+    handleTabIndex: this.handleTabIndex.bind(this),
   };
 
   public options: IKbd2Plugin = {
-    unitIndex: 1,
-    dayIndex: 2,
+    unitIndex: 0,
+    dayIndex: 0,
   };
 
   /**
@@ -51,9 +50,9 @@ export class Kbd2Plugin extends BasePlugin implements IPlugin {
 
     this.picker.on("keydown", this.binds.onKeydown);
 
-    this.picker.on("show", this.binds.onShow);
-    this.picker.on("hide", this.binds.onHide);
-    this.picker.on("render", this.binds.onHide);
+    this.picker.on("show", this.binds.handleTabIndex);
+    this.picker.on("hide", this.binds.handleTabIndex);
+    this.picker.on("render", this.binds.handleTabIndex);
   }
 
   /**
@@ -66,37 +65,20 @@ export class Kbd2Plugin extends BasePlugin implements IPlugin {
     });
 
     this.picker.off("keydown", this.binds.onKeydown);
-    this.picker.off("show", this.binds.onShow);
-    this.picker.off("hide", this.binds.onHide);
+    this.picker.off("show", this.binds.handleTabIndex);
+    this.picker.off("hide", this.binds.handleTabIndex);
+    this.picker.off('render', this.binds.handleTabIndex);
   }
 
-  private onShow() {
-    const days = this.picker.ui.container.querySelectorAll(".unit.day");
+  private handleTabIndex() {
+    const show = this.picker.ui.container.classList.contains('show');
+    const days = this.picker.ui.container.querySelectorAll(".unit.day:not(.locked,.not-available)");
     [...days].forEach(
-      (el: HTMLElement) => (el.tabIndex = this.options.dayIndex)
+      (el: HTMLElement) => (el.tabIndex = show ? this.options.dayIndex : -1)
     );
-    const elems = this.picker.ui.container.querySelectorAll(".unit:not(.day)");
-    [...elems].forEach(
-      (el: HTMLElement) => (el.tabIndex = this.options.unitIndex)
-    );
-    const selects = this.picker.ui.container.querySelectorAll("select");
-    [...selects].forEach(
-      (el: HTMLElement) => (el.tabIndex = this.options.unitIndex)
-    );
-  }
-
-  private onHide() {
-    const days = this.picker.ui.container.querySelectorAll(".unit.day");
-    [...days].forEach(
-      (el: HTMLElement) => (el.tabIndex = -1)
-    );
-    const elems = this.picker.ui.container.querySelectorAll(".unit:not(.day)");
-    [...elems].forEach(
-      (el: HTMLElement) => (el.tabIndex = -1)
-    );
-    const selects = this.picker.ui.container.querySelectorAll("select");
-    [...selects].forEach(
-      (el: HTMLElement) => (el.tabIndex = -1)
+    const units = this.picker.ui.container.querySelectorAll(".unit:not(.day)");
+    [...units].forEach(
+      (el: HTMLElement) => (el.tabIndex = show ? this.options.unitIndex : -1)
     );
   }
 

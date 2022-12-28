@@ -16,7 +16,7 @@ export const rangeCss = /* css */ `
   position: absolute;
   visibility: hidden;
   white-space: nowrap;
-  z-index: 1;
+  z-index: 2;
 }
 .range-plugin-tooltip:before {
   border-left: 5px solid transparent;
@@ -63,7 +63,7 @@ export const rangeCss = /* css */ `
   pointer-events: none;
   position: absolute;
   right: -14px;
-  z-index: 1;
+  z-index: 2;
 }
 .container.range-plugin .calendar > .days-grid > .day.start.flipped {
   border-bottom-left-radius: 0;
@@ -88,7 +88,7 @@ export const rangeCss = /* css */ `
   left: -14px;
   pointer-events: none;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 }
 .container.range-plugin .calendar > .days-grid > .day.end.flipped {
   border-bottom-left-radius: var(--border-radius);
