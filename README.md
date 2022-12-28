@@ -133,8 +133,12 @@ export type RangePickerProps = CommonProps & {
   --ease-font-family: inherit;
   --ease-box-shadow: 0 4px 28px 0 rgb(0 0 0 / 12%);
   --ease-month-name-font-weight: 700;
+  --ease-focus-color: #2e6fda;
   --ease-color-fg-locked: #9e9e9e;
   --ease-color-bg-locked: #ffab91;
   --ease-color-bg-unavailable: #f9f9f9;
+  --ease-color-bg-inrange: #e6effe;
+  --ease-color-bg-tooltip: #fff;
+  --ease-color-fg-tooltip: #1e293b;
 }
 ```
