@@ -1,7 +1,6 @@
 // @ts-nocheck
 import {
   BasePlugin,
-  IEventDetail,
   IPlugin,
   IBaseConfig,
 } from "@easepick/base-plugin";
@@ -22,9 +21,10 @@ export class Kbd2Plugin extends BasePlugin implements IPlugin {
   public rangePlugin: RangePlugin;
 
   public binds = {
-    onView: this.onView.bind(this),
     onKeydown: this.onKeydown.bind(this),
     onOpen: this.onOpen.bind(this),
+    onShow: this.onShow.bind(this),
+    onHide: this.onHide.bind(this),
   };
 
   public options: IKbd2Plugin = {
@@ -49,8 +49,11 @@ export class Kbd2Plugin extends BasePlugin implements IPlugin {
     const element = this.picker.options.element as HTMLElement;
     element.addEventListener("keydown", this.binds.onOpen, { capture: true });
 
-    this.picker.on("view", this.binds.onView);
     this.picker.on("keydown", this.binds.onKeydown);
+
+    this.picker.on("show", this.binds.onShow);
+    this.picker.on("hide", this.binds.onHide);
+    this.picker.on("render", this.binds.onHide);
   }
 
   /**
@@ -62,8 +65,39 @@ export class Kbd2Plugin extends BasePlugin implements IPlugin {
       capture: true,
     });
 
-    this.picker.off("view", this.binds.onView);
     this.picker.off("keydown", this.binds.onKeydown);
+    this.picker.off("show", this.binds.onShow);
+    this.picker.off("hide", this.binds.onHide);
+  }
+
+  private onShow() {
+    const days = this.picker.ui.container.querySelectorAll(".unit.day");
+    [...days].forEach(
+      (el: HTMLElement) => (el.tabIndex = this.options.dayIndex)
+    );
+    const elems = this.picker.ui.container.querySelectorAll(".unit:not(.day)");
+    [...elems].forEach(
+      (el: HTMLElement) => (el.tabIndex = this.options.unitIndex)
+    );
+    const selects = this.picker.ui.container.querySelectorAll("select");
+    [...selects].forEach(
+      (el: HTMLElement) => (el.tabIndex = this.options.unitIndex)
+    );
+  }
+
+  private onHide() {
+    const days = this.picker.ui.container.querySelectorAll(".unit.day");
+    [...days].forEach(
+      (el: HTMLElement) => (el.tabIndex = -1)
+    );
+    const elems = this.picker.ui.container.querySelectorAll(".unit:not(.day)");
+    [...elems].forEach(
+      (el: HTMLElement) => (el.tabIndex = -1)
+    );
+    const selects = this.picker.ui.container.querySelectorAll("select");
+    [...selects].forEach(
+      (el: HTMLElement) => (el.tabIndex = -1)
+    );
   }
 
   private onOpen(event) {
@@ -78,34 +112,6 @@ export class Kbd2Plugin extends BasePlugin implements IPlugin {
       case "Escape":
         this.picker.hide();
         break;
-    }
-  }
-
-  /**
-   * Function `view` event
-   * Adds `tabIndex` to the picker elements
-   *
-   * @param event
-   */
-  private onView(event: CustomEvent) {
-    const { view, target }: IEventDetail = event.detail;
-
-    if (target && "querySelector" in target) {
-      if (
-        view === "CalendarDay" &&
-        !["locked", "not-available"].some((x) => target.classList.contains(x))
-      ) {
-        target.tabIndex = this.options.dayIndex;
-      } else {
-        const elems = target.querySelectorAll(".unit:not(.day)");
-        [...elems].forEach(
-          (el: HTMLElement) => (el.tabIndex = this.options.unitIndex)
-        );
-        const selects = target.querySelectorAll("select");
-        [...selects].forEach(
-          (el: HTMLElement) => (el.tabIndex = this.options.unitIndex)
-        );
-      }
     }
   }
 
