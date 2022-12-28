@@ -35,6 +35,7 @@ export const coreCss = /* css */ `
   --primary-color: var(--ease-primary-color, #2e6fda);
   --secondary-color: var(--ease-secondary-color, #64748b);
   --font-family: var(--ease-font-family, inherit);
+  --box-shadow: var(--ease-box-shadow, 0 4px 28px 0 rgb(0 0 0 / 12%));
 }
 * {
   box-sizing: border-box;
@@ -62,7 +63,7 @@ export const coreCss = /* css */ `
   visibility: hidden;
 }
 .container.show {
-  box-shadow: 0 4px 28px 0 rgb(0 0 0 / 12%);
+  box-shadow: var(--box-shadow);
   height: auto;
   transform: scale(1);
 }
