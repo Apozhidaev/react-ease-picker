@@ -2,7 +2,6 @@ import React, { useMemo, memo } from "react";
 import useEvent from "react-use-event-hook";
 import EasePicker, {
   EasePickOptions,
-  AmpPlugin,
   LockPlugin,
   DateTime,
 } from "react-easepick";
@@ -11,6 +10,8 @@ import {
   resetButtonIcon,
   adjustLeftPosition,
 } from "./common/date-picker";
+import { Kbd2Plugin } from "./common/kbd2-plugin";
+import { AmpPlugin } from "./common/amp-plugin";
 import { DatePickerProps } from "./types";
 
 function DatePicker({
@@ -34,7 +35,7 @@ function DatePicker({
       css: datePickerCss,
       date: date ? new DateTime(date).toJSDate() : undefined,
       format,
-      plugins: [AmpPlugin, LockPlugin],
+      plugins: [AmpPlugin, LockPlugin, Kbd2Plugin],
       setup(picker) {
         picker.on("select", (e) => {
           const { date } = e.detail;

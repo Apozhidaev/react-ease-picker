@@ -2,7 +2,6 @@ import React, { useMemo, memo } from "react";
 import useEvent from "react-use-event-hook";
 import EasePicker, {
   EasePickOptions,
-  AmpPlugin,
   RangePlugin,
   LockPlugin,
   PresetPlugin,
@@ -13,6 +12,8 @@ import {
   resetButtonIcon,
   adjustLeftPosition,
 } from "./common/range-picker";
+import { Kbd2Plugin } from "./common/kbd2-plugin";
+import { AmpPlugin } from "./common/amp-plugin";
 import { RangePickerProps } from "./types";
 
 function RangePicker({
@@ -57,6 +58,7 @@ function RangePicker({
         AmpPlugin,
         RangePlugin,
         LockPlugin,
+        Kbd2Plugin,
         ...(customPreset ? [PresetPlugin] : []),
       ],
       setup(picker) {

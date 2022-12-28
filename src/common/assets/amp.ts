@@ -17,11 +17,6 @@ export const ampCss = /* css */ `
   border: none;
   font-size: 14px;
   padding: 3px;
-  outline: none;
-}
-.container.amp-plugin.range-plugin .calendars .calendar:not(:first-child) > .header .month-name select {
-  pointer-events: none;
-  appearance: none;
 }
 .container.amp-plugin
   .calendars

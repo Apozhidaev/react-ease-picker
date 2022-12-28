@@ -213,10 +213,10 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
-easepick-react@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/easepick-react/-/easepick-react-0.0.4.tgz#4d38f9057f73070df2acb66aaad48938e113a4ae"
-  integrity sha512-HfhZxlALZOJ1+jwc55JHGPryBzav1W50OsZGW33SqqDOMXj7dTBH42jvNIrgvx3lhmn3GhJQzRvyktO0dxAbEA==
+easepick-react@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/easepick-react/-/easepick-react-0.0.5.tgz#679c1fe6f9f8829f50efb0b2c3e057248b52f5d4"
+  integrity sha512-rw3CYSd08QIlZi75DhiLlmKYcGmp90hlwtYFlkDmjoI10qj+60EJYDfs8uxrPVBVxiW3ZrssFkVBnTjjiaENuQ==
 
 esbuild@^0.16.9:
   version "0.16.10"
@@ -258,13 +258,13 @@ loose-envify@^1.1.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
-react-easepick@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/react-easepick/-/react-easepick-0.0.6.tgz#01ba81a8fd8dc5a26d4f2d07805db9babdba157e"
-  integrity sha512-OwwtkbZFITQRqfqVzDL7O0qcwCjDM79au85rvodBSog78VMNuSc1L6vVkx1Vd8XyFPyywKqtzRTJJTXpBqcFbQ==
+react-easepick@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-easepick/-/react-easepick-0.0.7.tgz#3caf566939060feaaa4eac887e74c2b665067491"
+  integrity sha512-ZaX+vNsbTjUlXKIQ31BsSa5JWMcs1ksIaJBB22oN0Plug7FovdRnlG/dv3G11BLrhYdUCaTPXI4aHU2sc5kQ1A==
   dependencies:
     "@easepick/bundle" "^1.2.0"
-    easepick-react "^0.0.4"
+    easepick-react "^0.0.5"
 
 react-use-event-hook@^0.9.3:
   version "0.9.3"
