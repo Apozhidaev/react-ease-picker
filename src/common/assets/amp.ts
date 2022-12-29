@@ -5,7 +5,7 @@ export const resetButtonIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="no
 export const ampCss = /* css */ `
 :host {
   --month-name-font-weight: var(--ease-month-name-font-weight, 700);
-  --focus-color: var(--ease-focus-color, #2e6fda);
+  --focus-color: var(--ease-focus-color, #94a3b8);
 }
 .container.amp-plugin .calendars .calendar > .header .month-name {
   align-items: center;

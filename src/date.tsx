@@ -1,14 +1,12 @@
 import React, { useMemo, memo } from "react";
 import useEvent from "react-use-event-hook";
-import EasePicker, {
-  EasePickOptions,
-  LockPlugin,
-  DateTime,
-} from "react-easepick";
+import { DateTime } from "@easepick/datetime";
+import { LockPlugin } from "@easepick/lock-plugin";
+import EasePicker, { EasePickOptions } from "easepick-react";
 import {
   datePickerCss,
   resetButtonIcon,
-  adjustLeftPosition,
+  adjustPosition,
 } from "./common/date-picker";
 import { Kbd2Plugin } from "./common/kbd2-plugin";
 import { AmpPlugin } from "./common/amp-plugin";
@@ -25,6 +23,8 @@ function DatePicker({
   position,
   resetButton = true,
   locale,
+  offsetTop = 2,
+  offsetLeft,
   ...rest
 }: DatePickerProps) {
   const handleSelect = useEvent(onSelect);
@@ -46,9 +46,7 @@ function DatePicker({
           picker.hide();
         });
         picker.on("show", () => {
-          if (position === "right") {
-            picker.ui.container.style.left = `${adjustLeftPosition(picker)}px`;
-          }
+          adjustPosition(picker, position, offsetTop, offsetLeft);
         });
       },
       AmpPlugin: {
@@ -78,6 +76,8 @@ function DatePicker({
       resetButton,
       locale?.apply,
       locale?.cancel,
+      offsetTop,
+      offsetLeft,
       ...Object.values(rest),
     ]
   );

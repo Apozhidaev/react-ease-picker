@@ -15,6 +15,8 @@ type CommonProps = {
     cancel?: string;
     apply?: string;
   };
+  offsetTop?: number;
+  offsetLeft?: number;
 };
 
 export type DatePickerProps = CommonProps & {

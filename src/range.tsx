@@ -1,16 +1,14 @@
 import React, { useMemo, memo } from "react";
 import useEvent from "react-use-event-hook";
-import EasePicker, {
-  EasePickOptions,
-  RangePlugin,
-  LockPlugin,
-  PresetPlugin,
-  DateTime,
-} from "react-easepick";
+import { DateTime } from "@easepick/datetime";
+import { LockPlugin } from "@easepick/lock-plugin";
+import { RangePlugin } from "@easepick/range-plugin";
+import { PresetPlugin } from "@easepick/preset-plugin";
+import EasePicker, { EasePickOptions } from "easepick-react";
 import {
   rangePickerCss,
   resetButtonIcon,
-  adjustLeftPosition,
+  adjustPosition,
 } from "./common/range-picker";
 import { Kbd2Plugin } from "./common/kbd2-plugin";
 import { AmpPlugin } from "./common/amp-plugin";
@@ -30,6 +28,8 @@ function RangePicker({
   resetButton = true,
   locale,
   daysLocale,
+  offsetTop = 2,
+  offsetLeft,
   ...rest
 }: RangePickerProps) {
   const handleSelect = useEvent(onSelect);
@@ -96,9 +96,7 @@ function RangePicker({
           }
         });
         picker.on("show", () => {
-          if (position === "right") {
-            picker.ui.container.style.left = `${adjustLeftPosition(picker)}px`;
-          }
+          adjustPosition(picker, position, offsetTop, offsetLeft);
         });
       },
       AmpPlugin: {
@@ -145,6 +143,8 @@ function RangePicker({
       daysLocale?.few,
       daysLocale?.many,
       daysLocale?.other,
+      offsetTop,
+      offsetLeft,
       ...Object.values(rest),
     ]
   );

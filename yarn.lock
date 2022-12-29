@@ -2,62 +2,33 @@
 # yarn lockfile v1
 
 
-"@easepick/amp-plugin@^1.1.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@easepick/amp-plugin/-/amp-plugin-1.2.0.tgz#9e7a9ff42641cba1b35d905629d82264bb67730d"
-  integrity sha512-RU1/0cTn+g60/ZGQiu0VC8YV3te3G//ld/WtqxT1fFg9D0Zf981GnLzpCFr0Xs+qFfdvDkjETqFZNKGJ4rObjA==
-  dependencies:
-    "@easepick/base-plugin" "^1.1.0"
-
-"@easepick/base-plugin@^1.1.0":
+"@easepick/base-plugin@^1.1.0", "@easepick/base-plugin@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@easepick/base-plugin/-/base-plugin-1.2.0.tgz#76e88ba5c39b53b8a1de80b80fe890f3273bbd9d"
   integrity sha512-N5zeUW2E0gyOuVCiQs2va0kM2hzojE4XFDrlYBZ4JmQ1pflkipaVgrJoTJVP5/g4dhO94zFhwJ4chhRFnpK1IQ==
   dependencies:
     "@easepick/core" "^1.1.0"
 
-"@easepick/bundle@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@easepick/bundle/-/bundle-1.2.0.tgz#e811ec7db507acdc74d5ecdd662275d426e8a651"
-  integrity sha512-G435F0pNIIwokrCKbd0Ro4yXWNvZfnEIkHtYwpkVUYakjj5IGxbWQt5aBFthNS4QGskB4lwB9u5MqjzBC0hADg==
-  dependencies:
-    "@easepick/amp-plugin" "^1.1.0"
-    "@easepick/base-plugin" "^1.1.0"
-    "@easepick/core" "^1.1.0"
-    "@easepick/datetime" "^1.1.0"
-    "@easepick/kbd-plugin" "^1.1.0"
-    "@easepick/lock-plugin" "^1.1.0"
-    "@easepick/preset-plugin" "^1.1.0"
-    "@easepick/range-plugin" "^1.1.0"
-    "@easepick/time-plugin" "^1.1.0"
-
-"@easepick/core@^1.1.0":
+"@easepick/core@^1.1.0", "@easepick/core@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@easepick/core/-/core-1.2.0.tgz#a0789aa626e8b6571bc5577f81df66da30f489a1"
   integrity sha512-kfuQcx/vMbEXZfDOHgk74jFnQFysy+2nXpRH+ATyahYoMqAvtImLOkOxNmdSV0AcWdGeo3PJqB272pMI175EUg==
   dependencies:
     "@easepick/datetime" "^1.1.0"
 
-"@easepick/datetime@^1.1.0":
+"@easepick/datetime@^1.1.0", "@easepick/datetime@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@easepick/datetime/-/datetime-1.2.0.tgz#2018e8080961b1cff0ed021613559c1090107dd1"
   integrity sha512-J7xQSMIPCMOXE8wTHEY/XsleQ3P6w+BpV0VAM8k6YlF7w/rzHY9EkRqa4EEjaifMuOLWqEMIiJYijBw7zcBjOA==
 
-"@easepick/kbd-plugin@^1.1.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@easepick/kbd-plugin/-/kbd-plugin-1.2.0.tgz#79967ac115abddb04fa9b2f08dd6b549c07cbdb0"
-  integrity sha512-kCKBWtOPsnpei9nrSjcA201lPcT5linEvMvdG/3t50PimvRuI8mvH3/SUUkpPZMpR13T3HMtv/dzxx1d+gbpEQ==
-  dependencies:
-    "@easepick/base-plugin" "^1.1.0"
-
-"@easepick/lock-plugin@^1.1.0":
+"@easepick/lock-plugin@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@easepick/lock-plugin/-/lock-plugin-1.2.0.tgz#57b43963fb699261fe88e7f14181d719329565fa"
   integrity sha512-kKxsStxQJukk+FTyjJR8fTQOLDfB/JwDyq1Yy/DYQEVPNIFy3676l2CPS59yVgpExsRl48O3KBTSBIAE4Sschw==
   dependencies:
     "@easepick/base-plugin" "^1.1.0"
 
-"@easepick/preset-plugin@^1.1.0":
+"@easepick/preset-plugin@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@easepick/preset-plugin/-/preset-plugin-1.2.0.tgz#3797f58b8d55698243418e017b3d10f7973216e7"
   integrity sha512-d9W9Ruuk1OaBGm0YVLoyH8l4P843YAWweTe4L7+U009Esw9/h8+UlmG19dO73dBfdLsPcighwahzNOQWfjOPlg==
@@ -65,17 +36,10 @@
     "@easepick/base-plugin" "^1.1.0"
     "@easepick/range-plugin" "^1.1.0"
 
-"@easepick/range-plugin@^1.1.0":
+"@easepick/range-plugin@^1.1.0", "@easepick/range-plugin@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@easepick/range-plugin/-/range-plugin-1.2.0.tgz#42fc4b7a9d06b272124c14134b9747343d577b2f"
   integrity sha512-LcG6vffmnqdvhNxcdq3cfVtLEzL18Wmu6HgA++vuyJ5WaqTbmQ40zahXcAaadzqeiVTHSYkvzbetcMAjSXvdjw==
-  dependencies:
-    "@easepick/base-plugin" "^1.1.0"
-
-"@easepick/time-plugin@^1.1.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@easepick/time-plugin/-/time-plugin-1.2.0.tgz#c3f50e97b70e91963f1e9d448e64817a18548a1e"
-  integrity sha512-OYNzJ8BJYT15iHSN29YDSqhmsuNVmKHQt4ktqyA7Y/VbknuASea37YmQfd89isdCK/y2zJ78yduK/PDgZazHwQ==
   dependencies:
     "@easepick/base-plugin" "^1.1.0"
 
@@ -213,10 +177,10 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
-easepick-react@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/easepick-react/-/easepick-react-0.0.5.tgz#679c1fe6f9f8829f50efb0b2c3e057248b52f5d4"
-  integrity sha512-rw3CYSd08QIlZi75DhiLlmKYcGmp90hlwtYFlkDmjoI10qj+60EJYDfs8uxrPVBVxiW3ZrssFkVBnTjjiaENuQ==
+easepick-react@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/easepick-react/-/easepick-react-0.0.6.tgz#9835b768eaeeaf81f30fdd10bf4fda70e994c9cf"
+  integrity sha512-+/CEt2DLMNFP1D0FCYKPSBLbORe1vNrtUDkTQqaMj8cwL62gyxNc1J1KZXh6UCnq8j4gvbVikyoYNEWX2nuWrQ==
 
 esbuild@^0.16.9:
   version "0.16.10"
@@ -257,14 +221,6 @@ loose-envify@^1.1.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
-
-react-easepick@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/react-easepick/-/react-easepick-0.0.7.tgz#3caf566939060feaaa4eac887e74c2b665067491"
-  integrity sha512-ZaX+vNsbTjUlXKIQ31BsSa5JWMcs1ksIaJBB22oN0Plug7FovdRnlG/dv3G11BLrhYdUCaTPXI4aHU2sc5kQ1A==
-  dependencies:
-    "@easepick/bundle" "^1.2.0"
-    easepick-react "^0.0.5"
 
 react-use-event-hook@^0.9.3:
   version "0.9.3"

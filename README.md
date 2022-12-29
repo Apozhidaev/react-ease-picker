@@ -72,6 +72,8 @@ type CommonProps = {
     cancel?: string;
     apply?: string;
   };
+  offsetTop?: number;
+  offsetLeft?: number;
 };
 
 export type DatePickerProps = CommonProps & {
@@ -98,6 +100,7 @@ export type RangePickerProps = CommonProps & {
     other?: string;
   };
 };
+
 ```
 
 ## Customize
@@ -123,9 +126,9 @@ export type RangePickerProps = CommonProps & {
   --ease-color-btn-secondary-bg: #fff;
   --ease-color-btn-secondary-fg: #475569;
   --ease-color-btn-secondary-border: #cbd5e1;
-  --ease-color-btn-secondary-hover-bg: #64748b;
-  --ease-color-btn-secondary-hover-fg: #fff;
-  --ease-color-btn-secondary-hover-border: #64748b;
+  --ease-color-btn-secondary-hover-bg: #f8fafc;
+  --ease-color-btn-secondary-hover-fg: #475569;
+  --ease-color-btn-secondary-hover-border: #cbd5e1;
   --ease-color-btn-secondary-disabled-bg: #cbd5e1;
   --ease-color-btn-secondary-disabled-fg: #fff;
   --ease-color-btn-secondary-disabled-border: #cbd5e1;
@@ -140,7 +143,7 @@ export type RangePickerProps = CommonProps & {
   --ease-font-family: inherit;
   --ease-box-shadow: 0 4px 28px 0 rgb(0 0 0 / 12%);
   --ease-month-name-font-weight: 700;
-  --ease-focus-color: #2e6fda;
+  --ease-focus-color: #94a3b8;
   --ease-color-fg-locked: #9e9e9e;
   --ease-color-bg-locked: #ffab91;
   --ease-color-bg-unavailable: #f9f9f9;
