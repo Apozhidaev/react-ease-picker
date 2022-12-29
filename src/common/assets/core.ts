@@ -1,7 +1,7 @@
 export const coreCss = /* css */ `
 :host {
   --color-bg-default: var(--ease-color-bg-default, #fff);
-  --color-bg-secondary: var(--ease-color-bg-secondary, #f3f4f6);
+  --color-bg-secondary: var(--ease-color-bg-secondary, #f1f5f9);
   --color-fg-default: var(--ease-color-fg-default, #1e293b);
   --color-fg-primary: var(--ease-color-fg-primary, #2e6fda);
   --color-fg-secondary: var(--ease-color-fg-secondary, #64748b);

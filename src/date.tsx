@@ -24,14 +24,14 @@ function DatePicker({
   placeholder,
   position,
   resetButton = true,
-  cancelText,
-  applyText,
+  locale,
   ...rest
 }: DatePickerProps) {
   const handleSelect = useEvent(onSelect);
   const options: EasePickOptions = useMemo(
     () => ({
       ...rest,
+      locale,
       css: datePickerCss,
       date: date ? new DateTime(date).toJSDate() : undefined,
       format,
@@ -50,10 +50,6 @@ function DatePicker({
             picker.ui.container.style.left = `${adjustLeftPosition(picker)}px`;
           }
         });
-      },
-      locale: {
-        ...(cancelText ? { cancel: cancelText } : {}),
-        ...(applyText ? { apply: applyText } : {}),
       },
       AmpPlugin: {
         dropdown: {
@@ -80,9 +76,9 @@ function DatePicker({
       format,
       position,
       resetButton,
-      cancelText,
-      applyText,
-      Object.values(rest),
+      locale?.apply,
+      locale?.cancel,
+      ...Object.values(rest),
     ]
   );
 

@@ -8,12 +8,13 @@ type CommonProps = {
   resetButton?: boolean;
   firstDay?: number;
   lang?: string;
-  zIndex?: number;
   scrollToDate?: boolean;
   documentClick?: boolean | (() => void);
   autoApply?: boolean;
-  cancelText?: string;
-  applyText?: string;
+  locale?: {
+    cancel?: string;
+    apply?: string;
+  };
 };
 
 export type DatePickerProps = CommonProps & {
@@ -32,4 +33,11 @@ export type RangePickerProps = CommonProps & {
   endDate?: string;
   onSelect: (start: string, end: string) => void;
   presets?: RangePickerPreset[];
+  daysLocale?: {
+    one?: string;
+    two?: string;
+    few?: string;
+    many?: string;
+    other?: string;
+  };
 };

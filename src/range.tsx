@@ -28,8 +28,8 @@ function RangePicker({
   placeholder = "Start date – End date",
   position,
   resetButton = true,
-  cancelText,
-  applyText,
+  locale,
+  daysLocale,
   ...rest
 }: RangePickerProps) {
   const handleSelect = useEvent(onSelect);
@@ -50,6 +50,7 @@ function RangePicker({
   const options: EasePickOptions = useMemo(
     () => ({
       ...rest,
+      locale,
       css: rangePickerCss,
       format,
       grid: 2,
@@ -100,10 +101,6 @@ function RangePicker({
           }
         });
       },
-      locale: {
-        ...(cancelText ? { cancel: cancelText } : {}),
-        ...(applyText ? { apply: applyText } : {}),
-      },
       AmpPlugin: {
         dropdown: {
           months: true,
@@ -125,6 +122,7 @@ function RangePicker({
         startDate: startDate ? new DateTime(startDate) : undefined,
         endDate: endDate ? new DateTime(endDate) : undefined,
         delimiter: " – ",
+        locale: daysLocale,
       },
       PresetPlugin: {
         position: "bottom",
@@ -139,10 +137,15 @@ function RangePicker({
       format,
       position,
       resetButton,
-      cancelText,
-      applyText,
       customPreset,
-      Object.values(rest),
+      locale?.apply,
+      locale?.cancel,
+      daysLocale?.one,
+      daysLocale?.two,
+      daysLocale?.few,
+      daysLocale?.many,
+      daysLocale?.other,
+      ...Object.values(rest),
     ]
   );
 

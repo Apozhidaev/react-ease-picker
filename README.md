@@ -65,12 +65,13 @@ type CommonProps = {
   resetButton?: boolean;
   firstDay?: number;
   lang?: string;
-  zIndex?: number;
   scrollToDate?: boolean;
   documentClick?: boolean | (() => void);
   autoApply?: boolean;
-  cancelText?: string;
-  applyText?: string;
+  locale?: {
+    cancel?: string;
+    apply?: string;
+  };
 };
 
 export type DatePickerProps = CommonProps & {
@@ -89,15 +90,21 @@ export type RangePickerProps = CommonProps & {
   endDate?: string;
   onSelect: (start: string, end: string) => void;
   presets?: RangePickerPreset[];
+  daysLocale?: {
+    one?: string;
+    two?: string;
+    few?: string;
+    many?: string;
+    other?: string;
+  };
 };
-
 ```
 
 ## Customize
 ```css
 :root {
   --ease-color-bg-default: #fff;
-  --ease-color-bg-secondary: #f3f4f6;
+  --ease-color-bg-secondary: #f1f5f9;
   --ease-color-fg-default: #1e293b;
   --ease-color-fg-primary: #2e6fda;
   --ease-color-fg-secondary: #64748b;
