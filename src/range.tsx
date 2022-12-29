@@ -122,7 +122,7 @@ function RangePicker({
         startDate: startDate ? new DateTime(startDate) : undefined,
         endDate: endDate ? new DateTime(endDate) : undefined,
         delimiter: " – ",
-        locale: daysLocale,
+        ...(daysLocale ? { locale: daysLocale } : {}),
       },
       PresetPlugin: {
         position: "bottom",
