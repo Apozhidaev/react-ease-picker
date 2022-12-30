@@ -1,4 +1,5 @@
 import type { Core } from "@easepick/core";
+import { DateTime } from "@easepick/datetime";
 
 export function adjustPosition(
   picker: Core,
@@ -17,7 +18,6 @@ export function adjustPosition(
     }px`;
   }
   if (offsetTop) {
-    console.log(offsetTop);
     picker.ui.container.style.top = `${
       parseFloat(picker.ui.container.style.top) + offsetTop
     }px`;
@@ -27,4 +27,10 @@ export function adjustPosition(
       parseFloat(picker.ui.container.style.left) + offsetLeft
     }px`;
   }
+}
+
+export function toISODate(date: number | string | Date | DateTime) {
+  return date instanceof DateTime
+    ? date.format("YYYY-MM-DD")
+    : new DateTime(date).format("YYYY-MM-DD");
 }

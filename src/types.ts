@@ -17,6 +17,10 @@ type CommonProps = {
   };
   offsetTop?: number;
   offsetLeft?: number;
+  grid?: number;
+  calendars?: number;
+  css?: string;
+  testId?: string;
 };
 
 export type DatePickerProps = CommonProps & {

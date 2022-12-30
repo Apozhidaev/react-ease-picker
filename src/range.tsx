@@ -9,6 +9,7 @@ import {
   rangePickerCss,
   resetButtonIcon,
   adjustPosition,
+  toISODate,
 } from "./common/range-picker";
 import { Kbd2Plugin } from "./common/kbd2-plugin";
 import { AmpPlugin } from "./common/amp-plugin";
@@ -30,9 +31,14 @@ function RangePicker({
   daysLocale,
   offsetTop = 2,
   offsetLeft,
+  grid = 2,
+  calendars = 2,
+  css,
+  testId,
   ...rest
 }: RangePickerProps) {
   const handleSelect = useEvent(onSelect);
+
   const customPreset = useMemo(() => {
     if (presets) {
       const presetMap: Required<EasePickOptions>["PresetPlugin"]["customPreset"] =
@@ -46,15 +52,22 @@ function RangePicker({
       return presetMap;
     }
     return undefined;
-  }, [JSON.stringify(presets)]);
+  }, [
+    (presets || []).flatMap(({ label, startDate, endDate }) => [
+      label,
+      startDate,
+      endDate,
+    ]),
+  ]);
+
   const options: EasePickOptions = useMemo(
     () => ({
       ...rest,
       locale,
-      css: rangePickerCss,
+      css: `${rangePickerCss}${css}`,
       format,
-      grid: 2,
-      calendars: 2,
+      grid,
+      calendars,
       plugins: [
         AmpPlugin,
         RangePlugin,
@@ -65,10 +78,7 @@ function RangePicker({
       setup(picker) {
         picker.on("select", (e) => {
           const { start, end } = e.detail;
-          handleSelect(
-            new DateTime(start).format("YYYY-MM-DD"),
-            new DateTime(end).format("YYYY-MM-DD")
-          );
+          handleSelect(toISODate(start), toISODate(end));
         });
         picker.on("clear", () => {
           handleSelect("", "");
@@ -81,13 +91,10 @@ function RangePicker({
             const pickedStart = picker.datePicked[0] || picker.getStartDate();
             const pickedEnd = picker.datePicked[1] || picker.getEndDate();
             if (pickedStart && pickedEnd) {
-              const startIso = new DateTime(pickedStart).format("YYYY-MM-DD");
-              const endIso = new DateTime(pickedEnd).format("YYYY-MM-DD");
-              const btnStartIso = new DateTime(Number(start)).format(
-                "YYYY-MM-DD"
-              );
-              const btnEndIso = new DateTime(Number(end)).format("YYYY-MM-DD");
-              if (startIso === btnStartIso && endIso === btnEndIso) {
+              if (
+                toISODate(pickedStart) === toISODate(Number(start)) &&
+                toISODate(pickedEnd) === toISODate(Number(end))
+              ) {
                 target.classList.add("active");
               } else {
                 target.classList.remove("active");
@@ -145,6 +152,9 @@ function RangePicker({
       daysLocale?.other,
       offsetTop,
       offsetLeft,
+      grid,
+      calendars,
+      css,
       ...Object.values(rest),
     ]
   );
@@ -154,6 +164,7 @@ function RangePicker({
       className={className}
       placeholder={placeholder}
       options={options}
+      data-testid={testId || "ease-picker"}
     />
   );
 }

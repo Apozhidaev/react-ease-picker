@@ -7,6 +7,7 @@ import {
   datePickerCss,
   resetButtonIcon,
   adjustPosition,
+  toISODate,
 } from "./common/date-picker";
 import { Kbd2Plugin } from "./common/kbd2-plugin";
 import { AmpPlugin } from "./common/amp-plugin";
@@ -25,6 +26,10 @@ function DatePicker({
   locale,
   offsetTop = 2,
   offsetLeft,
+  grid = 1,
+  calendars = 1,
+  css,
+  testId,
   ...rest
 }: DatePickerProps) {
   const handleSelect = useEvent(onSelect);
@@ -32,14 +37,16 @@ function DatePicker({
     () => ({
       ...rest,
       locale,
-      css: datePickerCss,
+      css: `${datePickerCss}${css}`,
       date: date ? new DateTime(date).toJSDate() : undefined,
       format,
+      grid,
+      calendars,
       plugins: [AmpPlugin, LockPlugin, Kbd2Plugin],
       setup(picker) {
         picker.on("select", (e) => {
           const { date } = e.detail;
-          handleSelect(new DateTime(date).format("YYYY-MM-DD"));
+          handleSelect(toISODate(date));
         });
         picker.on("clear", () => {
           handleSelect("");
@@ -78,6 +85,9 @@ function DatePicker({
       locale?.cancel,
       offsetTop,
       offsetLeft,
+      grid,
+      calendars,
+      css,
       ...Object.values(rest),
     ]
   );
@@ -87,6 +97,7 @@ function DatePicker({
       className={className}
       placeholder={placeholder}
       options={options}
+      data-testid={testId || "ease-picker"}
     />
   );
 }

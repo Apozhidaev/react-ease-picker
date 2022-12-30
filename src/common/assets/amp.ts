@@ -6,6 +6,7 @@ export const ampCss = /* css */ `
 :host {
   --month-name-font-weight: var(--ease-month-name-font-weight, 700);
   --focus-color: var(--ease-focus-color, #94a3b8);
+  --select-outline-color: var(--ease-select-outline-color, #e2e8f0);
 }
 .container.amp-plugin .calendars .calendar > .header .month-name {
   align-items: center;
@@ -65,5 +66,15 @@ export const ampCss = /* css */ `
   outline-color: var(--focus-color);
   z-index: 1;
   outline-offset: 1px;
+}
+select.unit {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: var(--select-outline-color);
+  outline-offset: 1px;
+}
+select.unit:focus-visible {
+  outline-color: var(--focus-color);
+  outline-style: solid;
 }
 `;

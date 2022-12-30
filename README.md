@@ -74,6 +74,10 @@ type CommonProps = {
   };
   offsetTop?: number;
   offsetLeft?: number;
+  grid?: number;
+  calendars?: number;
+  css?: string;
+  testId?: string;
 };
 
 export type DatePickerProps = CommonProps & {
@@ -100,6 +104,7 @@ export type RangePickerProps = CommonProps & {
     other?: string;
   };
 };
+
 
 ```
 
@@ -144,6 +149,7 @@ export type RangePickerProps = CommonProps & {
   --ease-box-shadow: 0 4px 28px 0 rgb(0 0 0 / 12%);
   --ease-month-name-font-weight: 700;
   --ease-focus-color: #94a3b8;
+  --ease-select-outline-color: #e2e8f0;
   --ease-color-fg-locked: #9e9e9e;
   --ease-color-bg-locked: #ffab91;
   --ease-color-bg-unavailable: #f9f9f9;
