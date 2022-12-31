@@ -177,6 +177,20 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
+easepick-plugin-amp@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/easepick-plugin-amp/-/easepick-plugin-amp-0.0.1.tgz#fb10b47546cb995b427ca8447f7d417660b0a37d"
+  integrity sha512-S1LdjdawGkkTxxHQtPPkdl/24EdMPu12Tz/+XwRs0tXevxgQciektt3blUejL2TKAhMUa4RvaV8H+P2EXCEQBw==
+  dependencies:
+    "@easepick/base-plugin" "^1.2.0"
+
+easepick-plugin-keyboard@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/easepick-plugin-keyboard/-/easepick-plugin-keyboard-0.0.1.tgz#1a2f3a63ccfdf884906c8e583a4db4883ea92015"
+  integrity sha512-WyRZzv8flEW9v4SZmLf9aS0njecP9YZ1xDlx2cXlxpzsFsJ8Suubhd1cunrrMBRLMT3UoN2357161cWXqchllQ==
+  dependencies:
+    "@easepick/base-plugin" "^1.2.0"
+
 easepick-react@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/easepick-react/-/easepick-react-0.0.6.tgz#9835b768eaeeaf81f30fdd10bf4fda70e994c9cf"

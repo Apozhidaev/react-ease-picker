@@ -40,7 +40,7 @@ function App() {
                 },
               ]}
               position="right"
-              // autoApply={false}
+              autoApply={false}
               // grid={1}
               // calendars={1}
             />

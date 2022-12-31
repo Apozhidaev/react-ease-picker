@@ -7,12 +7,11 @@ import { PresetPlugin } from "@easepick/preset-plugin";
 import EasePicker, { EasePickOptions } from "easepick-react";
 import {
   rangePickerCss,
-  resetButtonIcon,
   adjustPosition,
   toISODate,
 } from "./common/range-picker";
-import { Kbd2Plugin } from "./common/kbd2-plugin";
-import { AmpPlugin } from "./common/amp-plugin";
+import { AmpPlugin } from "easepick-plugin-amp";
+import { KeyboardPlugin } from "easepick-plugin-keyboard";
 import { RangePickerProps } from "./types";
 
 function RangePicker({
@@ -27,6 +26,7 @@ function RangePicker({
   placeholder = "Start date – End date",
   position,
   resetButton = true,
+  weekNumbers,
   locale,
   daysLocale,
   offsetTop = 2,
@@ -72,7 +72,7 @@ function RangePicker({
         AmpPlugin,
         RangePlugin,
         LockPlugin,
-        Kbd2Plugin,
+        KeyboardPlugin,
         ...(customPreset ? [PresetPlugin] : []),
       ],
       setup(picker) {
@@ -82,7 +82,6 @@ function RangePicker({
         });
         picker.on("clear", () => {
           handleSelect("", "");
-          picker.hide();
         });
         picker.on("view", (e) => {
           const { view, target } = e.detail;
@@ -95,9 +94,9 @@ function RangePicker({
                 toISODate(pickedStart) === toISODate(Number(start)) &&
                 toISODate(pickedEnd) === toISODate(Number(end))
               ) {
-                target.classList.add("active");
+                target.classList.add("selected");
               } else {
-                target.classList.remove("active");
+                target.classList.remove("selected");
               }
             }
           }
@@ -113,11 +112,9 @@ function RangePicker({
           ...(minDate ? { minYear: new DateTime(minDate).getFullYear() } : {}),
           ...(maxDate ? { maxYear: new DateTime(maxDate).getFullYear() } : {}),
         },
-        resetButton,
         darkMode: false,
-        locale: {
-          resetButton: resetButtonIcon,
-        },
+        resetButton,
+        weekNumbers,
       },
       LockPlugin: {
         minDate: minDate ? new DateTime(minDate).toJSDate() : undefined,
@@ -142,6 +139,7 @@ function RangePicker({
       format,
       position,
       resetButton,
+      weekNumbers,
       customPreset,
       locale?.apply,
       locale?.cancel,

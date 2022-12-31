@@ -41,8 +41,8 @@ export const presetCss = /* css */ `
   color: var(--color-fg-primary);
   cursor: pointer;
 }
-.preset-plugin-container > button.active,
-.preset-plugin-container > button.active:hover {
+.preset-plugin-container > button.selected,
+.preset-plugin-container > button.selected:hover {
   background-color: var(--color-btn-primary-hover-bg);
   color: var(--color-btn-primary-hover-fg);
 }

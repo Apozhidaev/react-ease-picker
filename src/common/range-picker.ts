@@ -1,5 +1,5 @@
 import { coreCss } from "./assets/core";
-import { ampCss, resetButtonIcon } from "./assets/amp";
+import { ampCss } from "./assets/amp";
 import { lockCss } from "./assets/lock";
 import { rangeCss } from "./assets/range";
 import { presetCss } from "./assets/preset";
@@ -7,4 +7,4 @@ import { adjustPosition, toISODate } from "./utils";
 
 const rangePickerCss = `${coreCss}${lockCss}${rangeCss}${presetCss}${ampCss}`;
 
-export { resetButtonIcon, rangePickerCss, adjustPosition, toISODate };
+export { rangePickerCss, adjustPosition, toISODate };

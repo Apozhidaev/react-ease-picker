@@ -63,6 +63,7 @@ type CommonProps = {
   placeholder?: string;
   position?: "left" | "right";
   resetButton?: boolean;
+  weekNumbers?: boolean;
   firstDay?: number;
   lang?: string;
   scrollToDate?: boolean;
@@ -104,8 +105,6 @@ export type RangePickerProps = CommonProps & {
     other?: string;
   };
 };
-
-
 ```
 
 ## Customize

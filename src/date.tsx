@@ -5,12 +5,11 @@ import { LockPlugin } from "@easepick/lock-plugin";
 import EasePicker, { EasePickOptions } from "easepick-react";
 import {
   datePickerCss,
-  resetButtonIcon,
   adjustPosition,
   toISODate,
 } from "./common/date-picker";
-import { Kbd2Plugin } from "./common/kbd2-plugin";
-import { AmpPlugin } from "./common/amp-plugin";
+import { AmpPlugin } from "easepick-plugin-amp";
+import { KeyboardPlugin } from "easepick-plugin-keyboard";
 import { DatePickerProps } from "./types";
 
 function DatePicker({
@@ -23,6 +22,7 @@ function DatePicker({
   placeholder,
   position,
   resetButton = true,
+  weekNumbers,
   locale,
   offsetTop = 2,
   offsetLeft,
@@ -42,7 +42,7 @@ function DatePicker({
       format,
       grid,
       calendars,
-      plugins: [AmpPlugin, LockPlugin, Kbd2Plugin],
+      plugins: [AmpPlugin, LockPlugin, KeyboardPlugin],
       setup(picker) {
         picker.on("select", (e) => {
           const { date } = e.detail;
@@ -50,7 +50,6 @@ function DatePicker({
         });
         picker.on("clear", () => {
           handleSelect("");
-          picker.hide();
         });
         picker.on("show", () => {
           adjustPosition(picker, position, offsetTop, offsetLeft);
@@ -63,11 +62,9 @@ function DatePicker({
           ...(minDate ? { minYear: new DateTime(minDate).getFullYear() } : {}),
           ...(maxDate ? { maxYear: new DateTime(maxDate).getFullYear() } : {}),
         },
-        resetButton,
         darkMode: false,
-        locale: {
-          resetButton: resetButtonIcon,
-        },
+        resetButton,
+        weekNumbers,
       },
       LockPlugin: {
         minDate: minDate ? new DateTime(minDate).toJSDate() : undefined,
@@ -81,6 +78,7 @@ function DatePicker({
       format,
       position,
       resetButton,
+      weekNumbers,
       locale?.apply,
       locale?.cancel,
       offsetTop,
