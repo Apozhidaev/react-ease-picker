@@ -9,8 +9,9 @@ function App() {
           <td>
             <DatePicker
               onSelect={(date) => {
-                console.log(date);
+                console.log(date, 'DatePicker.onSelect');
               }}
+              weekNumbers
             />
           </td>
           <td>
@@ -20,7 +21,7 @@ function App() {
               minDate="2020-01-01"
               maxDate="2023-01-01"
               onSelect={(start, end) => {
-                console.log(start, end);
+                console.log(start, end, 'RangePicker.onSelect');
               }}
               presets={[
                 {
@@ -40,7 +41,7 @@ function App() {
                 },
               ]}
               position="right"
-              autoApply={false}
+              // autoApply={false}
               // grid={1}
               // calendars={1}
             />

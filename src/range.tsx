@@ -25,6 +25,7 @@ function RangePicker({
   presets,
   placeholder = "Start date – End date",
   position,
+  presetPosition = "bottom",
   resetButton = true,
   weekNumbers,
   locale,
@@ -121,19 +122,15 @@ function RangePicker({
         maxDate: maxDate ? new DateTime(maxDate).toJSDate() : undefined,
       },
       RangePlugin: {
-        startDate: startDate ? new DateTime(startDate) : undefined,
-        endDate: endDate ? new DateTime(endDate) : undefined,
         delimiter: " – ",
         ...(daysLocale ? { locale: daysLocale } : {}),
       },
       PresetPlugin: {
-        position: "bottom",
+        position: presetPosition,
         customPreset,
       },
     }),
     [
-      startDate,
-      endDate,
       minDate,
       maxDate,
       format,
@@ -141,6 +138,7 @@ function RangePicker({
       resetButton,
       weekNumbers,
       customPreset,
+      presetPosition,
       locale?.apply,
       locale?.cancel,
       daysLocale?.one,
@@ -161,6 +159,8 @@ function RangePicker({
     <EasePicker
       className={className}
       placeholder={placeholder}
+      startDate={startDate}
+      endDate={endDate}
       options={options}
       data-testid={testId || "ease-picker"}
     />

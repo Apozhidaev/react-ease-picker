@@ -2,7 +2,7 @@ export const ampCss = /* css */ `
 :host {
   --month-name-font-weight: var(--ease-month-name-font-weight, 700);
   --focus-color: var(--ease-focus-color, #94a3b8);
-  --select-outline-color: var(--ease-select-outline-color, #e2e8f0);
+  --select-outline-color: var(--ease-select-outline-color, #e5e7eb);
 }
 .container.amp-plugin .calendars .calendar > .header .month-name {
   align-items: center;

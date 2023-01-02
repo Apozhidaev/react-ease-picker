@@ -38,7 +38,6 @@ function DatePicker({
       ...rest,
       locale,
       css: `${datePickerCss}${css}`,
-      date: date ? new DateTime(date).toJSDate() : undefined,
       format,
       grid,
       calendars,
@@ -72,7 +71,6 @@ function DatePicker({
       },
     }),
     [
-      date,
       minDate,
       maxDate,
       format,
@@ -94,6 +92,7 @@ function DatePicker({
     <EasePicker
       className={className}
       placeholder={placeholder}
+      date={date}
       options={options}
       data-testid={testId || "ease-picker"}
     />

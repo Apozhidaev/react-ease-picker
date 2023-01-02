@@ -1,6 +1,6 @@
 {
   "name": "react-ease-picker",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "main": "dist/index.js",
   "module": "dist/module.js",
   "types": "dist/index.d.ts",
@@ -48,7 +48,7 @@
     "@easepick/range-plugin": "^1.2.0",
     "easepick-plugin-amp": "^0.0.1",
     "easepick-plugin-keyboard": "^0.0.1",
-    "easepick-react": "^0.0.6",
+    "easepick-react": "^1.0.1",
     "react-use-event-hook": "^0.9.3"
   },
   "devDependencies": {

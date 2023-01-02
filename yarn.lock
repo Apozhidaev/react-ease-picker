@@ -191,10 +191,10 @@ easepick-plugin-keyboard@^0.0.1:
   dependencies:
     "@easepick/base-plugin" "^1.2.0"
 
-easepick-react@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/easepick-react/-/easepick-react-0.0.6.tgz#9835b768eaeeaf81f30fdd10bf4fda70e994c9cf"
-  integrity sha512-+/CEt2DLMNFP1D0FCYKPSBLbORe1vNrtUDkTQqaMj8cwL62gyxNc1J1KZXh6UCnq8j4gvbVikyoYNEWX2nuWrQ==
+easepick-react@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/easepick-react/-/easepick-react-1.0.1.tgz#0ab66b94d1001405b1c36518d66b189eb7c4fed9"
+  integrity sha512-BbSH5XLkN3X6GXVtBKI0o9LscfNOrGc6MP9b7SRXxXEBQCrkMBdi6fgVMi2lZ/9m5Ht+e22A//pGyoR0lWRxHA==
 
 esbuild@^0.16.9:
   version "0.16.10"

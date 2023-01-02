@@ -40,6 +40,7 @@ export type RangePickerProps = CommonProps & {
   endDate?: string;
   onSelect: (start: string, end: string) => void;
   presets?: RangePickerPreset[];
+  presetPosition?: "left" | "right" | "top" | "bottom";
   daysLocale?: {
     one?: string;
     two?: string;

@@ -97,6 +97,7 @@ export type RangePickerProps = CommonProps & {
   endDate?: string;
   onSelect: (start: string, end: string) => void;
   presets?: RangePickerPreset[];
+  presetPosition?: "left" | "right" | "top" | "bottom";
   daysLocale?: {
     one?: string;
     two?: string;
@@ -111,7 +112,7 @@ export type RangePickerProps = CommonProps & {
 ```css
 :root {
   --ease-color-bg-default: #fff;
-  --ease-color-bg-secondary: #f1f5f9;
+  --ease-color-bg-secondary: #f2f5f8;
   --ease-color-fg-default: #1e293b;
   --ease-color-fg-primary: #2e6fda;
   --ease-color-fg-secondary: #64748b;
@@ -148,7 +149,7 @@ export type RangePickerProps = CommonProps & {
   --ease-box-shadow: 0 4px 28px 0 rgb(0 0 0 / 12%);
   --ease-month-name-font-weight: 700;
   --ease-focus-color: #94a3b8;
-  --ease-select-outline-color: #e2e8f0;
+  --ease-select-outline-color: #e5e7eb;
   --ease-color-fg-locked: #9e9e9e;
   --ease-color-bg-locked: #ffab91;
   --ease-color-bg-unavailable: #f9f9f9;
