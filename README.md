@@ -79,6 +79,9 @@ type CommonProps = {
   calendars?: number;
   css?: string;
   testId?: string;
+  options?: EasePickOptions;
+  defaultOptions?: EasePickOptions;
+  setup?: EasePickOptions["setup"];
 };
 
 export type DatePickerProps = CommonProps & {

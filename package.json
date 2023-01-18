@@ -1,6 +1,6 @@
 {
   "name": "react-ease-picker",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "main": "dist/index.js",
   "module": "dist/module.js",
   "types": "dist/index.d.ts",
@@ -28,12 +28,12 @@
   "scripts": {
     "clean": "rm -rf dist/common",
     "build:ts": "tsc && yarn run clean",
-    "build:cjs": "esbuild src/index.tsx --format=cjs --bundle --outfile=dist/index.js --external:react* --external:@easepick/* --external:easepick*",
-    "build:esm": "esbuild src/index.tsx --format=esm --bundle --outfile=dist/module.js --external:react* --external:@easepick/* --external:easepick*",
-    "build:date:cjs": "esbuild src/date.tsx --format=cjs --bundle --outfile=date/index.js --external:react* --external:@easepick/* --external:easepick*",
-    "build:date:esm": "esbuild src/date.tsx --format=esm --bundle --outfile=date/module.js --external:react* --external:@easepick/* --external:easepick*",
-    "build:range:cjs": "esbuild src/range.tsx --format=cjs --bundle --outfile=range/index.js --external:react* --external:@easepick/* --external:easepick*",
-    "build:range:esm": "esbuild src/range.tsx --format=esm --bundle --outfile=range/module.js --external:react* --external:@easepick/* --external:easepick*",
+    "build:cjs": "esbuild src/index.tsx --format=cjs --bundle --outfile=dist/index.js --external:react* --external:@easepick/* --external:easepick* --external:lodash*",
+    "build:esm": "esbuild src/index.tsx --format=esm --bundle --outfile=dist/module.js --external:react* --external:@easepick/* --external:easepick* --external:lodash*",
+    "build:date:cjs": "esbuild src/date.tsx --format=cjs --bundle --outfile=date/index.js --external:react* --external:@easepick/* --external:easepick* --external:lodash*",
+    "build:date:esm": "esbuild src/date.tsx --format=esm --bundle --outfile=date/module.js --external:react* --external:@easepick/* --external:easepick* --external:lodash*",
+    "build:range:cjs": "esbuild src/range.tsx --format=cjs --bundle --outfile=range/index.js --external:react* --external:@easepick/* --external:easepick* --external:lodash*",
+    "build:range:esm": "esbuild src/range.tsx --format=esm --bundle --outfile=range/module.js --external:react* --external:@easepick/* --external:easepick* --external:lodash*",
     "build": "yarn run build:cjs && yarn run build:esm && yarn run build:date:cjs && yarn run build:date:esm && yarn run build:range:cjs && yarn run build:range:esm && yarn run build:ts"
   },
   "peerDependencies": {
@@ -49,9 +49,11 @@
     "easepick-plugin-amp": "^0.0.1",
     "easepick-plugin-keyboard": "^0.0.1",
     "easepick-react": "^1.0.1",
+    "lodash.merge": "^4.6.2",
     "react-use-event-hook": "^0.9.3"
   },
   "devDependencies": {
+    "@types/lodash.merge": "^4.6.7",
     "@types/react": "^18.0.26",
     "esbuild": "^0.16.9",
     "react": "^18.2.0",

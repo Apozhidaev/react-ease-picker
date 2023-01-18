@@ -1,3 +1,4 @@
+import merge from "lodash.merge";
 import React, { useMemo, memo } from "react";
 import useEvent from "react-use-event-hook";
 import { DateTime } from "@easepick/datetime";
@@ -36,6 +37,9 @@ function RangePicker({
   calendars = 2,
   css,
   testId,
+  options,
+  defaultOptions,
+  setup,
   ...rest
 }: RangePickerProps) {
   const handleSelect = useEvent(onSelect);
@@ -61,99 +65,109 @@ function RangePicker({
     ]),
   ]);
 
-  const options: EasePickOptions = useMemo(
-    () => ({
-      ...rest,
-      locale,
-      css: `${rangePickerCss}${css}`,
-      format,
-      grid,
-      calendars,
-      plugins: [
-        AmpPlugin,
-        RangePlugin,
-        LockPlugin,
-        KeyboardPlugin,
-        ...(customPreset ? [PresetPlugin] : []),
-      ],
-      setup(picker) {
-        picker.on("select", (e) => {
-          const { start, end } = e.detail;
-          handleSelect(toISODate(start), toISODate(end));
-        });
-        picker.on("clear", () => {
-          handleSelect("", "");
-        });
-        picker.on("view", (e) => {
-          const { view, target } = e.detail;
-          if (view === "PresetPluginButton") {
-            const { start, end } = target.dataset;
-            const pickedStart = picker.datePicked[0] || picker.getStartDate();
-            const pickedEnd = picker.datePicked[1] || picker.getEndDate();
-            if (pickedStart && pickedEnd) {
-              if (
-                toISODate(pickedStart) === toISODate(Number(start)) &&
-                toISODate(pickedEnd) === toISODate(Number(end))
-              ) {
-                target.classList.add("selected");
-              } else {
-                target.classList.remove("selected");
+  const pickerOptions: EasePickOptions = useMemo(() => {
+    return merge<EasePickOptions, unknown, unknown>(
+      {
+        ...rest,
+        locale,
+        css: `${rangePickerCss}${css}`,
+        format,
+        grid,
+        calendars,
+        plugins: [
+          AmpPlugin,
+          RangePlugin,
+          LockPlugin,
+          KeyboardPlugin,
+          ...(customPreset ? [PresetPlugin] : []),
+        ],
+        setup(picker) {
+          picker.on("select", (e) => {
+            const { start, end } = e.detail;
+            handleSelect(toISODate(start), toISODate(end));
+          });
+          picker.on("clear", () => {
+            handleSelect("", "");
+          });
+          picker.on("view", (e) => {
+            const { view, target } = e.detail;
+            if (view === "PresetPluginButton") {
+              const { start, end } = target.dataset;
+              const pickedStart = picker.datePicked[0] || picker.getStartDate();
+              const pickedEnd = picker.datePicked[1] || picker.getEndDate();
+              if (pickedStart && pickedEnd) {
+                if (
+                  toISODate(pickedStart) === toISODate(Number(start)) &&
+                  toISODate(pickedEnd) === toISODate(Number(end))
+                ) {
+                  target.classList.add("selected");
+                } else {
+                  target.classList.remove("selected");
+                }
               }
             }
-          }
-        });
-        picker.on("show", () => {
-          adjustPosition(picker, position, offsetTop, offsetLeft);
-        });
-      },
-      AmpPlugin: {
-        dropdown: {
-          months: true,
-          years: true,
-          ...(minDate ? { minYear: new DateTime(minDate).getFullYear() } : {}),
-          ...(maxDate ? { maxYear: new DateTime(maxDate).getFullYear() } : {}),
+          });
+          picker.on("show", () => {
+            adjustPosition(picker, position, offsetTop, offsetLeft);
+          });
+          setup?.(picker);
         },
-        darkMode: false,
-        resetButton,
-        weekNumbers,
+        AmpPlugin: {
+          dropdown: {
+            months: true,
+            years: true,
+            ...(minDate
+              ? { minYear: new DateTime(minDate).getFullYear() }
+              : {}),
+            ...(maxDate
+              ? { maxYear: new DateTime(maxDate).getFullYear() }
+              : {}),
+          },
+          darkMode: false,
+          resetButton,
+          weekNumbers,
+        },
+        LockPlugin: {
+          minDate: minDate ? new DateTime(minDate).toJSDate() : undefined,
+          maxDate: maxDate ? new DateTime(maxDate).toJSDate() : undefined,
+        },
+        RangePlugin: {
+          delimiter: " – ",
+          ...(daysLocale ? { locale: daysLocale } : {}),
+        },
+        PresetPlugin: {
+          position: presetPosition,
+          customPreset,
+        },
       },
-      LockPlugin: {
-        minDate: minDate ? new DateTime(minDate).toJSDate() : undefined,
-        maxDate: maxDate ? new DateTime(maxDate).toJSDate() : undefined,
-      },
-      RangePlugin: {
-        delimiter: " – ",
-        ...(daysLocale ? { locale: daysLocale } : {}),
-      },
-      PresetPlugin: {
-        position: presetPosition,
-        customPreset,
-      },
-    }),
-    [
-      minDate,
-      maxDate,
-      format,
-      position,
-      resetButton,
-      weekNumbers,
-      customPreset,
-      presetPosition,
-      locale?.apply,
-      locale?.cancel,
-      daysLocale?.one,
-      daysLocale?.two,
-      daysLocale?.few,
-      daysLocale?.many,
-      daysLocale?.other,
-      offsetTop,
-      offsetLeft,
-      grid,
-      calendars,
-      css,
-      ...Object.values(rest),
-    ]
-  );
+      defaultOptions,
+      options
+    );
+  }, [
+    minDate,
+    maxDate,
+    format,
+    position,
+    resetButton,
+    weekNumbers,
+    customPreset,
+    presetPosition,
+    locale?.apply,
+    locale?.cancel,
+    daysLocale?.one,
+    daysLocale?.two,
+    daysLocale?.few,
+    daysLocale?.many,
+    daysLocale?.other,
+    offsetTop,
+    offsetLeft,
+    grid,
+    calendars,
+    css,
+    options,
+    setup,
+    ...Object.values(rest),
+  ]);
 
   return (
     <EasePicker
@@ -161,7 +175,7 @@ function RangePicker({
       placeholder={placeholder}
       startDate={startDate}
       endDate={endDate}
-      options={options}
+      options={pickerOptions}
       data-testid={testId || "ease-picker"}
     />
   );

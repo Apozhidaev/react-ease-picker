@@ -1,3 +1,5 @@
+import type { EasePickOptions } from "easepick-react";
+
 type CommonProps = {
   className?: string;
   minDate?: string;
@@ -22,6 +24,9 @@ type CommonProps = {
   calendars?: number;
   css?: string;
   testId?: string;
+  options?: EasePickOptions;
+  defaultOptions?: EasePickOptions;
+  setup?: EasePickOptions["setup"];
 };
 
 export type DatePickerProps = CommonProps & {

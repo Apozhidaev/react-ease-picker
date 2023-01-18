@@ -9,9 +9,15 @@ function App() {
           <td>
             <DatePicker
               onSelect={(date) => {
-                console.log(date, 'DatePicker.onSelect');
+                console.log(date, "DatePicker.onSelect");
               }}
               weekNumbers
+              options={{
+                AmpPlugin: {
+                  darkMode: true,
+                  resetButton: false,
+                },
+              }}
             />
           </td>
           <td>
@@ -21,7 +27,7 @@ function App() {
               minDate="2020-01-01"
               maxDate="2023-01-01"
               onSelect={(start, end) => {
-                console.log(start, end, 'RangePicker.onSelect');
+                console.log(start, end, "RangePicker.onSelect");
               }}
               presets={[
                 {
@@ -44,6 +50,13 @@ function App() {
               // autoApply={false}
               // grid={1}
               // calendars={1}
+              defaultOptions={{
+                RangePlugin: {
+                  tooltipNumber: (num) => {
+                    return num + 100;
+                  },
+                },
+              }}
             />
           </td>
         </tr>
